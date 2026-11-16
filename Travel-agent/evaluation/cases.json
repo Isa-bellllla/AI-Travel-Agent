@@ -1,0 +1,545 @@
+[
+  {
+    "id": "dev_clear",
+    "split": "development",
+    "turns": [
+      "A luxury hotel in Abu Dhabi with ocean views, please."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Abu Dhabi",
+        "luxury",
+        "ocean views"
+      ],
+      "hard_constraints": [
+        "Abu Dhabi"
+      ],
+      "expected_behavior": "Proceed directly; ocean evidence must be explicit.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_constraints",
+    "split": "development",
+    "turns": [
+      "I must stay in Dubai, under $300 per night, and need a swimming pool."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Dubai",
+        "USD 300 ceiling",
+        "swimming pool"
+      ],
+      "hard_constraints": [
+        "Dubai",
+        "budget",
+        "pool"
+      ],
+      "expected_behavior": "Use grounded tools; human-review A/B/C",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_subjective_budget",
+    "split": "development",
+    "turns": [
+      "Somewhere nice but not too expensive.",
+      "Let’s say Dubai, no more than $250 a night."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "subjective budget",
+        "Dubai",
+        "USD 250 ceiling"
+      ],
+      "hard_constraints": [
+        "Dubai",
+        "budget"
+      ],
+      "expected_behavior": "Clarify essential destination/budget; never invent a numeric amount.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_quiet",
+    "split": "development",
+    "turns": [
+      "I need somewhere quiet in Dubai.",
+      "I mean a room away from street noise, not a remote resort."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Dubai",
+        "quiet room",
+        "not necessarily remote"
+      ],
+      "hard_constraints": [
+        "Dubai"
+      ],
+      "expected_behavior": "Clarify materially distinct quiet experiences, preserve answer; do not infer soundproofing.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_no_match",
+    "split": "development",
+    "turns": [
+      "A hotel in Dubai costing no more than $1 per night."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Dubai",
+        "USD 1 maximum"
+      ],
+      "hard_constraints": [
+        "Dubai",
+        "budget"
+      ],
+      "expected_behavior": "No structured matches; ask what to relax.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_brand_average",
+    "split": "development",
+    "turns": [
+      "What is the mean off-season nightly price of Hyatt hotels in the database?"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Hyatt brand text",
+        "mean",
+        "off-season"
+      ],
+      "hard_constraints": [],
+      "expected_behavior": "Execute aggregate, explain brand substring scope and estimated rates.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_season",
+    "split": "development",
+    "turns": [
+      "Which Dubai hotel has the lowest peak-season reference rate?"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Dubai",
+        "lowest",
+        "peak-season"
+      ],
+      "hard_constraints": [
+        "Dubai"
+      ],
+      "expected_behavior": "Sort structured prices, show actual cheapest record.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_update",
+    "split": "development",
+    "turns": [
+      "Dubai with my family; a luxury hotel with a pool and access to attractions.",
+      "Actually I don’t need a pool anymore. Downtown access is more important."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Dubai",
+        "family",
+        "luxury",
+        "remove pool",
+        "priority downtown"
+      ],
+      "hard_constraints": [
+        "Dubai"
+      ],
+      "expected_behavior": "Remove pool requirement without creating anti-pool constraint; preserve unrelated context.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_explore",
+    "split": "development",
+    "turns": [
+      "Surprise me with somewhere beautiful."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "open-ended exploration"
+      ],
+      "hard_constraints": [],
+      "expected_behavior": "Proceed with grounded options without imposing invented location/budget.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_availability",
+    "split": "development",
+    "turns": [
+      "Can you guarantee a room next Friday?"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "availability guarantee"
+      ],
+      "hard_constraints": [],
+      "expected_behavior": "Explain lack of live availability; never promise a room.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_conflict",
+    "split": "development",
+    "turns": [
+      "I must be in both Dubai and Paris for the same hotel stay."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Dubai",
+        "Paris",
+        "conflicting destination"
+      ],
+      "hard_constraints": [],
+      "expected_behavior": "Ask a targeted clarification rather than silently selecting one destination.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "dev_similar",
+    "split": "development",
+    "turns": [
+      "Show me three hotels in Abu Dhabi.",
+      "Tell me about the second one.",
+      "Find something similar but cheaper."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Abu Dhabi",
+        "second reference",
+        "similar",
+        "cheaper"
+      ],
+      "hard_constraints": [
+        "Abu Dhabi",
+        "lower recorded rate"
+      ],
+      "expected_behavior": "Use latest list, focus reference, strict cheaper tool condition.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "holdout_unseen",
+    "split": "held_out",
+    "turns": [
+      "My idea of unwinding is watching the sea rather than booking treatments. Any stays in Muscat that fit?"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Muscat",
+        "sea",
+        "relaxation without assumed spa"
+      ],
+      "hard_constraints": [
+        "Muscat"
+      ],
+      "expected_behavior": "Use grounded tools; human-review A/B/C",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "holdout_urban_quiet",
+    "split": "held_out",
+    "turns": [
+      "I like the bustle outside, but want a restful base in Buenos Aires."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Buenos Aires",
+        "urban access",
+        "restful"
+      ],
+      "hard_constraints": [
+        "Buenos Aires"
+      ],
+      "expected_behavior": "Do not conflate restful with rural/remote.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "holdout_group",
+    "split": "held_out",
+    "turns": [
+      "Count the hotel records by city."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "count",
+        "group city"
+      ],
+      "hard_constraints": [],
+      "expected_behavior": "Run whole-dataset grouped count; no recommendation pipeline.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "holdout_seasonal_delta",
+    "split": "held_out",
+    "turns": [
+      "Show me the first three hotels in Paris, cheapest off-season first.",
+      "How much do their prices rise in peak season, in dollars and percent?"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Paris",
+        "sort off-season",
+        "seasonal differences",
+        "previous records"
+      ],
+      "hard_constraints": [
+        "Paris"
+      ],
+      "expected_behavior": "Compute deterministic seasonal differences for the same IDs.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "holdout_negation",
+    "split": "held_out",
+    "turns": [
+      "I must avoid resorts in Dubai."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Dubai",
+        "exclude resorts"
+      ],
+      "hard_constraints": [
+        "Dubai",
+        "not resort"
+      ],
+      "expected_behavior": "Require explicit negative evidence; unknown is not proof.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "holdout_month",
+    "split": "held_out",
+    "turns": [
+      "I’m going to Muscat in July, budget $400 per night."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Muscat",
+        "July",
+        "USD 400"
+      ],
+      "hard_constraints": [
+        "Muscat",
+        "budget"
+      ],
+      "expected_behavior": "Use explicit recorded months; conservative higher rate if unknown.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "holdout_comparison",
+    "split": "held_out",
+    "turns": [
+      "Pick three hotels in Tokyo.",
+      "Compare the first and third.",
+      "Which is cheaper off-season?"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Tokyo",
+        "first and third",
+        "cheapest off-season"
+      ],
+      "hard_constraints": [
+        "Tokyo"
+      ],
+      "expected_behavior": "Reuse ordered list and comparison focus; avoid new search.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "holdout_long_memory",
+    "split": "held_out",
+    "turns": [
+      "Dubai for my family.",
+      "A pool is a must.",
+      "A central location would help.",
+      "Budget up to $350.",
+      "Actually remove the pool requirement.",
+      "Keep the family and central location preferences.",
+      "I can stretch the budget; it isn’t a hard limit.",
+      "What was the second option?"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Dubai",
+        "family",
+        "central",
+        "pool removed",
+        "flexible budget",
+        "second reference"
+      ],
+      "hard_constraints": [
+        "Dubai"
+      ],
+      "expected_behavior": "Maintain cumulative state; remove only obsolete pool; do not invent new budget.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "holdout_sparse_data",
+    "split": "held_out",
+    "turns": [
+      "Which of your hotels has guaranteed soundproof rooms and a measured 300-metre walk to a train station?"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "soundproof guarantee",
+        "measured distance"
+      ],
+      "hard_constraints": [],
+      "expected_behavior": "Explain unsupported detail; no inferred measurements.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "holdout_brand",
+    "split": "held_out",
+    "turns": [
+      "How many hotels have no recorded brand, and what is their average peak-season rate?"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "blank brand",
+        "count",
+        "mean peak-season"
+      ],
+      "hard_constraints": [],
+      "expected_behavior": "Use empty-string equality filter and deterministic aggregation; no inferred brand.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "acceptance_10_turn",
+    "split": "acceptance",
+    "turns": [
+      "I want a hotel where I can just relax and do nothing.",
+      "I’d love to be somewhere near the beach.",
+      "Abu Dhabi would be nice.",
+      "I don’t want anything too expensive.",
+      "Under $300 per night.",
+      "Which of those is the cheapest during peak season?",
+      "Actually, I can spend a little more if the hotel is better.",
+      "Tell me more about the second one.",
+      "Does it have a swimming pool?",
+      "Find something similar but cheaper."
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "relaxation",
+        "beach",
+        "Abu Dhabi",
+        "subjective then numeric budget",
+        "peak comparison",
+        "budget flexibility",
+        "second reference",
+        "pool inquiry",
+        "similar cheaper"
+      ],
+      "hard_constraints": [
+        "Abu Dhabi",
+        "USD 300 until relaxed"
+      ],
+      "expected_behavior": "Evaluate final case cumulatively after predefined follow-ups, with A/B/C evidence. Clarification initial B=N/A.",
+      "follow_up_answers_frozen": true,
+      "rubric_scores": "Human review required; no model-based auto-pass"
+    }
+  },
+  {
+    "id": "reported_destination_tier_change",
+    "split": "regression",
+    "turns": [
+      "High end hotel in Japan",
+      "Luxury hotel in Dubai"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Japan then Dubai",
+        "high-end replaced by Top Luxury"
+      ],
+      "hard_constraints": [
+        "latest destination Dubai",
+        "latest category Top Luxury"
+      ],
+      "expected_behavior": "Replace incompatible slots; return the two Top Luxury Dubai source records if no further constraints apply; do not carry one-result limit.",
+      "follow_up_answers_frozen": true
+    }
+  },
+  {
+    "id": "reported_low_budget",
+    "split": "regression",
+    "turns": [
+      "Recommend hotels in Dubai",
+      "My budget is low",
+      "No more than $300 per night"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "Dubai",
+        "subjective budget",
+        "USD 300 numeric ceiling"
+      ],
+      "hard_constraints": [
+        "Dubai",
+        "USD 300 after clarification"
+      ],
+      "expected_behavior": "Ask a focused budget question without inventing dollars, then apply the answer and preserve Dubai.",
+      "follow_up_answers_frozen": true
+    }
+  },
+  {
+    "id": "reported_peak_months",
+    "split": "regression",
+    "turns": [
+      "When is peak season for Raffles Dubai Palm Hotel?"
+    ],
+    "annotation": {
+      "expected_concepts": [
+        "named hotel",
+        "peak-season timing"
+      ],
+      "hard_constraints": [
+        "correct hotel record"
+      ],
+      "expected_behavior": "Direct detail lookup; June, July, August, September; no budget clarification and no invented live availability.",
+      "follow_up_answers_frozen": true
+    }
+  }
+]

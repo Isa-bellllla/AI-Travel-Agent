@@ -1,0 +1,17 @@
+# Evaluation procedure
+
+The DOCX is authoritative. `cases.json` contains 12 development scenarios, 10 held-out scenarios, and the requested 10-turn acceptance conversation. Annotations are engineering drafts; have an evaluator approve expected concepts, hard/soft constraints, intended ambiguity, and follow-up answers before a formal evaluation. Freeze the dataset digest, code revision, model/version, prompt, generation settings, and approved annotations. Do not tune on held-out prompts.
+
+Run the actual provider using `python -m evaluation.run --split development` (see root README). A provider error exits nonzero and is recorded as a failed run, not an agent quality score. No automated test provider is used by this runner. Diagnostics include intent, plan/query, state changes, references via IDs, selected tools, source quotes, candidate coverage, final IDs/text, and interpretation/tool/total times.
+
+The default output is unscored. For each **completed case**, a human checks the full interaction and annotates exactly ONE final case record with `stage="completed"` and `scores={"A":0 or 1,"B":0 or 1,"C":0 or 1}`. Leave other recommendation turns `awaiting_review` so a multi-turn case is not counted repeatedly. Record `A_evidence`, `B_recognition` (correct expected concepts / total; threshold >=80%), `B_hard_constraints`, `B_grounded_reasons`, `C_evidence`, failure category, and memory/reference/tool diagnostics alongside the record. Do not assign B=1 for generic explanations or unverifiable hard-constraint satisfaction. If no preference concepts exist, recognition is N/A and judge whether enough information was requested rather than divide by zero.
+
+Clarification-only initial records remain `stage="interim"`, with B=null; score A/C against their factual claims and ambiguity handling if reviewed. If the case ends before the predefined follow-up is supplied, do not mark any record completed. A final clarification that does not complete the interaction remains interim. Cross-turn factual claims, preference retention, and incorporation of follow-ups must be reviewed cumulatively for the completed case. An appropriate clarification is not a failed recommendation.
+
+`python -m evaluation.run --score-file annotated.json` computes the official completed-case formulas and latency statistics. It does not add diagnostic points or infer subjective scores. The 45-second limit applies only to clarification latency, separate from quality. p95 uses nearest rank. Model failures are counted separately from latency compliance, not silently treated as fast successful turns.
+
+`pytest` tests deterministic components using deliberately queued structured outputs where needed. These tests cannot establish natural-language generalization, actual hierarchical clarification, real semantic entailment, or held-out rubric performance. Run and annotate the real conversations once inference is available. `docs/acceptance_attempt.json` records the actual unsuccessful local-provider acceptance attempt, stopped at turn one.
+
+## Reported regressions
+
+`--split regression` runs three new, separately annotated scenarios for the Japan/high-end to Dubai/luxury transition, subjective-budget clarification and numeric answer, and a specific hotel’s peak-season months. It uses the same real provider as other splits. The held-out set is unchanged. `Start_Travel_Agent.ipynb` includes an optional cell to run this split after configuring a real API key.

@@ -1,0 +1,10 @@
+[
+  {
+    "case_id": "acceptance_10_turn",
+    "user_message": "I want a hotel where I can just relax and do nothing.",
+    "error": "The language model could not complete the request. Check the local provider and model configuration.",
+    "scores": null,
+    "stage": "failed",
+    "split": "acceptance"
+  }
+]

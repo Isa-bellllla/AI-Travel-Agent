@@ -1,0 +1,12 @@
+{
+  "scope": "Deterministic database tools, NOT LLM evaluation",
+  "dataset_sha256": "6f4ee1e646fe536c3e23d868dc38004ac9d072439da7ebdaa0205d09833dde6c",
+  "queries_checked": 564,
+  "cities": 141,
+  "all_correct": true,
+  "mean_seconds": 7.11833847601401e-05,
+  "median_seconds": 5.119249999552267e-05,
+  "p95_seconds_nearest_rank": 0.00018278799961990444,
+  "llm_cases_scored": 0,
+  "rubric_score": null
+}

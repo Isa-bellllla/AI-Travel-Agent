@@ -1,0 +1,132 @@
+{
+  "rows": 622,
+  "columns": {
+    "Country": {
+      "missing": 0,
+      "unique": 59
+    },
+    "City": {
+      "missing": 0,
+      "unique": 141
+    },
+    "Hotel Name": {
+      "missing": 0,
+      "unique": 622
+    },
+    "brand": {
+      "missing": 181,
+      "unique": 35
+    },
+    "Brand level": {
+      "missing": 214,
+      "unique": 4
+    },
+    "Off-season price (USD/night)": {
+      "missing": 0,
+      "unique": 398
+    },
+    "Peak season price (USD/night)": {
+      "missing": 0,
+      "unique": 442
+    },
+    "Peak season months": {
+      "missing": 512,
+      "unique": 45
+    },
+    "Off-season months": {
+      "missing": 579,
+      "unique": 32
+    },
+    "Peak season sampling month": {
+      "missing": 606,
+      "unique": 8
+    },
+    "Off-season sampling months": {
+      "missing": 595,
+      "unique": 8
+    },
+    "Label": {
+      "missing": 4,
+      "unique": 618
+    },
+    "courtesy": {
+      "missing": 348,
+      "unique": 165
+    },
+    "Reasons for recommendation": {
+      "missing": 0,
+      "unique": 619
+    },
+    "Remark": {
+      "missing": 621,
+      "unique": 2
+    },
+    "price_missing": {
+      "missing": 0,
+      "unique": 2
+    }
+  },
+  "sha256": "6f4ee1e646fe536c3e23d868dc38004ac9d072439da7ebdaa0205d09833dde6c",
+  "categorical_values": {
+    "Brand level": {
+      "high-end": 175,
+      "": 214,
+      "Top Luxury": 130,
+      "International chain": 103
+    },
+    "brand": {
+      "Sofitel": 24,
+      "": 181,
+      "Park Hyatt": 24,
+      "four seasons": 19,
+      "Mandarin Oriental": 17,
+      "Conrad": 18,
+      "Hyatt": 42,
+      "Raffles": 3,
+      "Grand Hyatt": 20,
+      "Ritz-Carlton": 40,
+      "intercontinental": 29,
+      "Fairmont": 22,
+      "St. Regis": 16,
+      "Magnificent": 7,
+      "Amy": 7,
+      "W": 22,
+      "Langham": 3,
+      "JW Marriott": 23,
+      "Hilton": 10,
+      "Shangri-La": 6,
+      "Indigo": 3,
+      "Addison": 7,
+      "Renaissance": 11,
+      "Marriott": 25,
+      "Waldorf": 15,
+      "Regent": 3,
+      "Anantara": 3,
+      "Six Virtues": 1,
+      "Andes": 9,
+      "Aman": 2,
+      "Sheraton": 5,
+      "Kempinski": 1,
+      "banyan tree": 2,
+      "Capella": 1,
+      "peninsula": 1
+    },
+    "price_missing": {
+      "False": 621,
+      "True": 1
+    }
+  },
+  "price_ranges": {
+    "Off-season price (USD/night)": [
+      67.0,
+      5301.0
+    ],
+    "Peak season price (USD/night)": [
+      100.0,
+      5301.0
+    ]
+  },
+  "unique_location_keys": 622,
+  "countries": 59,
+  "cities": 141
+}

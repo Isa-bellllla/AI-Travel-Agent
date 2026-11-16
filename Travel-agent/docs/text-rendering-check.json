@@ -1,0 +1,8 @@
+{
+  "actual_csv_description_apostrophe_readable": true,
+  "html_entities_not_literal": true,
+  "ampersands_and_quotes_readable": true,
+  "html_probe_inert": true,
+  "llm_calls": 0,
+  "note": "Real Streamlit/Chromium rendering fixture; not model-quality evaluation."
+}
