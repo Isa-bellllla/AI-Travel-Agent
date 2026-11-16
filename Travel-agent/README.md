@@ -6,12 +6,12 @@ Stillwater is a conversational AI travel assistant that helps users find hotels 
 
 Users can describe the trip they have in mind, refine their preferences, compare hotels, and ask follow-up questions through a Streamlit chat interface.
 
-![Stillwater homepage](docs/ui-homepage.png)
+![Stillwater homepage](ui-homepage.png)
 
 <details>
 <summary>View the chat interface</summary>
 
-![Stillwater chat interface](docs/ui-chat-preview.png)
+![Stillwater chat interface](ui-chat-preview.png)
 
 The chat screenshot is a UI demonstration using actual dataset records, not a reported LLM evaluation result.
 
